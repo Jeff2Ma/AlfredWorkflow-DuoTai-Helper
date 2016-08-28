@@ -3,7 +3,7 @@
 # 一个多态ZPN 的助手管理型Alfred Workflow, 可通过本Workflow 直接查看账户信息,切换线路,开关某些模式
 #
 # @name: AlfredWorkflow-DuoTai-Helper
-# @version: 0.9.0
+# @version: 1.0.0
 # @author: JeffMa
 # @website: http://devework.com/
 # @url: https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper
@@ -16,7 +16,8 @@
 dt: 执行获取cookie 函数,通过xml展示可选参数及对应的说明;展示当前的代理情况:链接线路,边缘模式开启否,全网加速模式开启否,短地址(enter可拷贝)
 dt set: 设置多态账号信息
 dt switch: 展示当前所有可切换的线路
-dt switch [line-name]:
+dt switch [line-name]: 切换具体线路
+dt toggle [line-mode]: 开关/关闭相关模式
 '''
 
 import sys

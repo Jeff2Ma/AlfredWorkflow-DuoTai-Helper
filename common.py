@@ -11,7 +11,6 @@
 '''
 
 import sys
-from xml.etree import ElementTree as ET
 import requests
 import pickle
 import subprocess
@@ -79,6 +78,10 @@ def exist_keychain():
     if email_in_data == None:
         return False
     else:
+        try:
+            wf.get_password(email_in_data)
+        except PasswordNotFound:
+            return False
         return True
 
 '''
@@ -159,8 +162,14 @@ def dialog(msg, placeholder="", hide_input=False,
 添加账号信息并保存密码在 keychain 中
 '''
 def add_account():
+    email_in_data = wf.stored_data('duotai_email')
+    if email_in_data != None:
+        default_email = email_in_data
+    else:
+        default_email = "example@duotai.org"
+
     duotai_email = dialog(
-        u"请输入你的多态登录邮箱:", "example@duotai.org")
+        u"请输入你的多态登录邮箱:", default_email)
     if duotai_email is None:
         print(u"添加账号失败!")
         return 0
@@ -177,7 +186,7 @@ def add_account():
     # 保存多态邮箱到本地workflow data, 作为 keychain 中的入口 key
     wf.store_data('duotai_email', duotai_email)
 
-    email_in_data = wf.stored_data('duotai_email')
+    # email_in_data = wf.stored_data('duotai_email')
     # print email_in_data, duotai_email, duotai_password
 
     keychain_statue = ''
