@@ -3,7 +3,7 @@
 # 一个多态ZPN 的助手管理型Alfred Workflow, 可通过本Workflow 直接查看账户信息,切换线路,开关某些模式
 #
 # @name: AlfredWorkflow-DuoTai-Helper
-# @version: 1.0.0
+# @version: 1.2.0
 # @author: JeffMa
 # @website: http://devework.com/
 # @url: https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper
@@ -24,6 +24,8 @@ import sys
 import requests
 import json
 import datetime
+import subprocess
+
 import common  # 公共模块
 from workflow import Workflow, PasswordNotFound
 
@@ -132,21 +134,37 @@ def get_main_info(cookies):
     # 组合展示信息 part2
     item_title_2 =  current_hostname + ':' + str(current_port)
     item_sub_title_2 = 'http://xduotai.com/' + current_shortid + '.pac'
+    item_sub_tip_2 = u'提示: ↵ 将路径保存在系统的代理设置中, 按下 CMD+C 将复制到剪贴板'
     wf.add_item(item_title_2,
                 item_sub_title_2,
-                arg=item_title_2,
+                modifier_subtitles={
+                    u'fn': item_sub_tip_2,
+                    u'ctrl': item_sub_tip_2,
+                    u'alt': item_sub_tip_2,
+                    u'cmd': item_sub_tip_2,
+                },
+                arg=u'set_pac_url '+item_sub_title_2, # PAC 文件路径将安装到系统设置中
                 valid=True,
-                icon=u'icons/icon-fly.png')
+                icon=u'icons/icon-fly.png',
+                copytext=item_sub_title_2)
 
 
     # 组合展示信息 part3
     item_title_3 = u'套餐: ' + display_name + u', 至 ' + readable_time
     item_sub_title_3 = u'用户: ' + profile_name + ' , ' + u'邮箱: ' + profile_email
+    item_sub_tip_3 = u'提示: 按下 CMD+C 将复制[ ' + item_title_2 +u' ]到剪贴板'
     wf.add_item(item_title_3,
                 item_sub_title_3,
+                modifier_subtitles={
+                    u'fn': item_sub_tip_3,
+                    u'ctrl': item_sub_tip_3,
+                    u'alt': item_sub_tip_3,
+                    u'cmd': item_sub_tip_3,
+                },
                 arg=item_title_3,
                 valid=False,
-                icon=u'icons/icon-stat.png')
+                icon=u'icons/icon-stat.png',
+                copytext=item_title_2)
 
     wf.send_feedback()
 
@@ -214,6 +232,24 @@ def switch_line(line_mode):
     if r4.status_code == 200:
         print '成功切换到:' + common.line_to_name(line_mode)
 
+
+'''
+设置PAC 文件路径到系统代理配置
+'''
+def set_pac_url(pac_url):
+    # /usr/sbin/networksetup -setautoproxyurl Wi-Fi $pac_url
+    p = subprocess.Popen([
+        "/usr/sbin/networksetup",
+        "-setautoproxyurl",
+        "Wi-Fi",
+        pac_url],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    p.communicate()
+    if p.returncode != 0:
+        print u"无法设置!请给予系统权限!"
+    else:
+        print u"成功设置PAC 文件路径到系统代理配置!"
+
 '''
 关闭/开启相关模式
 '''
@@ -236,6 +272,48 @@ def toggle_mode(mode_command):
         if r4.status_code == 200:
             print '成功执行任务[' + mode_command + ']!'
 
+
+'''
+邀请情况
+'''
+def invite_info():
+    dt_cookies = common.load_cookies(common.dt_file_name)
+    r5 = requests.get('https://duotai.org/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
+    text_json = json.loads(r5.text)
+
+    invite_code = text_json['invite_codes'][0]['code']
+    invite_info_title = u"有效邀请码: " + invite_code.upper()
+
+    if invite_code != "":
+        wf.add_item(invite_info_title,
+                    u"按下 CMD+C 即可复制到剪贴板",
+                    valid=False,
+                    icon=u'icons/icon-new.png',
+                    copytext=invite_code.upper())
+    else:
+        wf.add_item(u"暂无邀请码",
+                    u" ↵ 生成新的邀请码",
+                    arg=u'create_invite_code',
+                    valid=True,
+                    icon=u'icons/icon-add.png')
+
+    wf.send_feedback()
+
+'''
+生成邀请码函数
+'''
+def create_invite_code():
+    dt_cookies = common.load_cookies(common.dt_file_name)
+    r6 = requests.post('https://duotai.org/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
+    text_json = json.loads(r6.text)
+    # 判断是否正常生成
+    if len(text_json) > 10:
+        new_code = text_json['code']
+        print u"新的邀请码:" + new_code.upper()
+    else:
+        print u"无法生成新的邀请码!"
+
+
 '''
 主函数
 '''
@@ -245,6 +323,8 @@ def main():
             show_line_info()
         else:
             switch_line(arg(2))
+    elif arg(1) == "invite":
+            invite_info()
     elif arg(0) == "default_item":
         default_item(arg(1))
     elif arg(0) == "second_task":
@@ -252,6 +332,10 @@ def main():
             toggle_mode(arg(2))
         elif arg(1) == "set_account":
             common.add_account()
+        elif arg(1) == "set_pac_url":
+            set_pac_url(arg(2))
+        elif arg(1) == "create_invite_code":
+            create_invite_code()
 
 if __name__ == '__main__':
     main()

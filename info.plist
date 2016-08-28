@@ -204,41 +204,41 @@
 		<key>15E7E7D6-91A4-4576-8F06-8796D7067CAF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>360</integer>
+			<integer>330</integer>
 			<key>ypos</key>
-			<integer>240</integer>
+			<integer>360</integer>
 		</dict>
 		<key>85663FCE-45C0-473A-A034-ABCE29269E5A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>600</integer>
+			<integer>570</integer>
 			<key>ypos</key>
-			<integer>240</integer>
+			<integer>360</integer>
 		</dict>
 		<key>B46DE5B2-BD21-4BB1-A27C-B36314B2E173</key>
 		<dict>
 			<key>xpos</key>
-			<integer>110</integer>
+			<integer>50</integer>
 			<key>ypos</key>
-			<integer>160</integer>
+			<integer>270</integer>
 		</dict>
 		<key>CF789974-B59D-4474-8AD5-DC95F701EBC8</key>
 		<dict>
 			<key>xpos</key>
-			<integer>360</integer>
+			<integer>330</integer>
 			<key>ypos</key>
-			<integer>110</integer>
+			<integer>210</integer>
 		</dict>
 		<key>D2E314F5-1A57-49AA-85BC-DFC74420780B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>590</integer>
+			<integer>560</integer>
 			<key>ypos</key>
-			<integer>110</integer>
+			<integer>210</integer>
 		</dict>
 	</dict>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.2.0</string>
 	<key>webaddress</key>
 	<string>http://devework.com/</string>
 </dict>
