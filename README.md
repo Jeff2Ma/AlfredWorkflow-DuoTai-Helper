@@ -22,7 +22,7 @@
 
 ## 下载
 
-[下载地址](http://https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper/releases)
+[下载地址](https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper/releases)
 
 ## 使用方法
 
