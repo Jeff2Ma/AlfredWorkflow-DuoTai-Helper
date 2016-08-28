@@ -204,37 +204,37 @@
 		<key>15E7E7D6-91A4-4576-8F06-8796D7067CAF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>330</integer>
+			<integer>340</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>220</integer>
 		</dict>
 		<key>85663FCE-45C0-473A-A034-ABCE29269E5A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>570</integer>
+			<integer>580</integer>
 			<key>ypos</key>
-			<integer>360</integer>
+			<integer>220</integer>
 		</dict>
 		<key>B46DE5B2-BD21-4BB1-A27C-B36314B2E173</key>
 		<dict>
 			<key>xpos</key>
-			<integer>50</integer>
+			<integer>60</integer>
 			<key>ypos</key>
-			<integer>270</integer>
+			<integer>130</integer>
 		</dict>
 		<key>CF789974-B59D-4474-8AD5-DC95F701EBC8</key>
 		<dict>
 			<key>xpos</key>
-			<integer>330</integer>
+			<integer>340</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>70</integer>
 		</dict>
 		<key>D2E314F5-1A57-49AA-85BC-DFC74420780B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<integer>570</integer>
 			<key>ypos</key>
-			<integer>210</integer>
+			<integer>70</integer>
 		</dict>
 	</dict>
 	<key>version</key>

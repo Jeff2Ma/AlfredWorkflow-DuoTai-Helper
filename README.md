@@ -1,6 +1,6 @@
 #AlfredWorkflow-DuoTai-Helper
 
-> 专为科学上网服务[多态ZPN](https://duotai.org/) 开发的一个助手管理型[Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
+> 专为科学上网服务[多态](https://duotai.org/) (duotai.org) 开发的一个助手管理型 [Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
 
 ## 功能与特色
 
@@ -8,15 +8,17 @@
 
 - 可以直接切换线路，开关某些模式，免除来回多次打开网页登录的麻烦；
 
-- 可以一键复制PAC 文件、代理连接信息到系统剪贴板；
+- 一键复制PAC 文件、代理连接信息到系统剪贴板；
 
-- 可以一键将PAC 文件路径保存在系统网络的自动代理配置中；
+- 一键将PAC 文件路径保存在系统网络的自动代理配置中；
+
+- 管理（查看、复制、新建）多态邀请码；
 
 - 存储和获取账户密码均通过系统keychain 进行，提高安全性；
 
 - 轻量级，不用下载官方臃肿的客户端；
 
-- Workflow 更新提醒功能。
+- Workflow 更新提醒功能（TODO）。
 
 ## 下载
 
@@ -56,7 +58,7 @@
 
 输入`dt`后选中第四条信息栏，按下`cmd`，`alt`，`control`，`fn`四个键任一个键均可看到提示：↵ 将路径保存在系统的代理设置中, 按下 `CMD+C` 将复制到剪贴板。
 
-所以，复制PAC 文件路径方法是输入`dt`后选中第四条信息栏，按下 `CMD+C`；复制代理信息是输入`dt`后选中第四条信息栏，按下 `CMD+C`；
+所以，复制PAC 文件路径方法：输入`dt`后选中第四条信息栏，按下 `CMD+C`；复制代理信息的方法：输入`dt`后选中第四条信息栏，按下 `CMD+C`；
 
 ### 配置PAC 文件路径到系统的自动代理配置中
 
@@ -70,17 +72,19 @@
 
 关键词：`dt invite`
 
-- 如果有新的有效邀请码（未被使用），则显示如下：
-
-![管理邀请码](./screenshot/12.png)
-
-此时按下`CMD+C`即可复制邀请码到系统剪贴板。
-
-- 如果已被使用，则提示创建新的邀请码：
+- 多态官方机制，一次仅可生成一个邀请码，且被使用后方可再次生成。如果邀请码已被使用，则提示创建新的邀请码：
 
 ![生成邀请码](./screenshot/11.png)
 
 回车即可创建新的邀请码。
+
+- 如果有新的有效邀请码（未被使用），则显示如下：
+
+![管理邀请码](./screenshot/12.png)
+
+此时按下`CMD+C`即可复制邀请码到系统剪贴板。就可以分享邀请给好友啦~ 
+
+> 利益相关的软广插入：如果需要邀请码注册多态账号，可访问[这儿](http://devework.com/duotai-code.txt) 获取最新有效邀请码。顺便一提，[这个简单页面](http://devework.com/duotai-code.txt)的背后是一套“获取邀请码+更新页面+发微博”的全自动化脚本，当然与本主题无关哈哈。
 
 ### 查看Keychain 中保存的账户信息
 
@@ -114,13 +118,19 @@
 
 - 强大的第三方[Python Alfred 库](http://www.deanishe.net/alfred-workflow/index.html) 
 
-- 一个[类似的插件](http://www.packal.org/workflow/apple-account-switcher)带来的灵感
+- 一个[Apple Account Switcher](http://www.packal.org/workflow/apple-account-switcher) Workflow 带来的灵感
 
 ## 意见反馈
 
 如果有意见反馈或者功能建议，欢迎创建 Issue 或发送 Pull Request，感谢你的支持和贡献。
 
-## 更新历史
+## 附：更新历史
+
+### V1.2.0 - 2016.08.28
+
+- 增加：管理邀请码功能
+
+- 开源代码，公开发布
 
 ### V1.1.0 - 2016.08.28
 
@@ -132,4 +142,4 @@
 
 ### V1.0.0 - 2016.08.27
 
-- 发布公开版本
+- 功能成型

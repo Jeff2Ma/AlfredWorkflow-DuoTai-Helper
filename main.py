@@ -281,10 +281,11 @@ def invite_info():
     r5 = requests.get('https://duotai.org/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
     text_json = json.loads(r5.text)
 
-    invite_code = text_json['invite_codes'][0]['code']
-    invite_info_title = u"有效邀请码: " + invite_code.upper()
+    # print text_json['invite_codes']
 
-    if invite_code != "":
+    if len(text_json['invite_codes']) > 0:
+        invite_code = text_json['invite_codes'][0]['code']
+        invite_info_title = u"有效邀请码: " + invite_code.upper()
         wf.add_item(invite_info_title,
                     u"按下 CMD+C 即可复制到剪贴板",
                     valid=False,
