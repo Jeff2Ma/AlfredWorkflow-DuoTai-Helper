@@ -14,6 +14,7 @@ import sys
 import requests
 import pickle
 import subprocess
+import math
 
 from workflow import Workflow, PasswordNotFound
 
@@ -33,6 +34,18 @@ dt_headers = {
     }
 
 dt_file_name = wf.datafile('cookie.txt')
+
+'''
+转换容量单位,size 为B 基本单位
+'''
+def convert_size(size):
+    if (size == 0):
+        return '0B'
+    size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
+    i = int(math.floor(math.log(size, 1024)))
+    p = math.pow(1024, i)
+    s = round(size / p, 2)
+    return '%s %s' % (s, size_name[i])
 
 '''
 转化为文字说明 line -> name

@@ -26,7 +26,7 @@
 
 ## 使用方法
 
-- 下载安装，通过关键词`dt`激活使用（截图隐藏部分敏感内容）：
+- 下载安装，通过关键词`dt`激活使用（截图中数据为模拟数据）：
 
 ![核心界面](./screenshot/1.png)
 
@@ -120,13 +120,17 @@
 
 - 一个[Apple Account Switcher](http://www.packal.org/workflow/apple-account-switcher) Workflow 带来的灵感
 
-- 这个设计师设计的[国旗图标](https://www.iconfinder.com/iconsets/world-cup-2014-cogged-wheel-style)
+- 这些设计师设计的图标：[一](https://www.iconfinder.com/iconsets/world-cup-2014-cogged-wheel-style)，[二](http://www.iconarchive.com/show/100-flat-icons-by-graphicloads.2.html)
 
 ## 意见反馈
 
 如果有意见反馈或者功能建议，欢迎创建 Issue 或发送 Pull Request，感谢你的支持和贡献。
 
 ## 附：更新历史
+
+### v1.2.2 - 2016.08.30
+
+- 增加：流量信息的展示
 
 ### v1.2.1 - 2016.08.29
 

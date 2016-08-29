@@ -98,6 +98,10 @@ def get_main_info(cookies):
     readable_time = date_array.strftime("%Y-%m-%d")
     # print readable_time
 
+    # 流量
+    usage_traffic = text_json['package']['usage'][0]
+    amount_traffic = text_json['package']['usage'][1]
+
     # 组合展示信息 part1
     item_title = u'当前线路: ' + current_line_mode_name
     item_icon = 'regions/icon-' + common.region_name(current_line_mode[0:2]) + '.png'
@@ -131,6 +135,20 @@ def get_main_info(cookies):
                 valid=True,
                 icon=item_icon_4)
 
+    # 组合展示信息 part6
+    item_title_6 = u'剩余流量: ' + common.convert_size(amount_traffic - usage_traffic)
+    item_sub_title_6 = u'总共: %s' % common.convert_size(amount_traffic)
+    item_sub_tip_6 = u'已用/剩余: %s/%s' % (common.convert_size(usage_traffic), common.convert_size(amount_traffic))
+    wf.add_item(item_title_6,
+                item_sub_title_6,
+                modifier_subtitles={
+                    u'fn': item_sub_tip_6,
+                    u'ctrl': item_sub_tip_6,
+                    u'alt': item_sub_tip_6,
+                    u'cmd': item_sub_tip_6,
+                },
+                valid=False,
+                icon=u'icons/icon-chart.png')
 
     # 组合展示信息 part2
     item_title_2 =  current_hostname + ':' + str(current_port)
@@ -148,7 +166,6 @@ def get_main_info(cookies):
                 valid=True,
                 icon=u'icons/icon-fly.png',
                 copytext=item_sub_title_2)
-
 
     # 组合展示信息 part3
     item_title_3 = u'套餐: ' + display_name + u', 至 ' + readable_time
