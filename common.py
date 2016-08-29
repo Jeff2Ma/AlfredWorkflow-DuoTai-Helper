@@ -35,25 +35,22 @@ dt_headers = {
 dt_file_name = wf.datafile('cookie.txt')
 
 '''
-转化为文字说明
+转化为文字说明 line -> name
 '''
-def line_to_name(line):
-    if line == 'usnv3':
-        name = '北美华北专线'
-    elif line == 'usev3':
-        name = '北美华东专线'
-    elif line == 'ussv3':
-        name = '北美华南专线'
-    elif line == 'jpnv3':
-        name = '日本华北专线'
-    elif line == 'jpev3':
-        name = '日本华东专线'
-    elif line == 'jpsv3':
-        name = '日本华南专线'
-    else:
-        name = '啥线路都不是'
+def line_to_name(line,lines):
+    for item in lines:
+        # print item['line']
+        if item['line'] == line:
+            return item['name']
 
-    return name
+def region_name(region_single):
+    # 有地区图标的列表
+    regions = ['au', 'de', 'fr', 'jp', 'nl', 'us', 'uk']
+    if region_single in regions:
+        icon_region = region_single
+    else:
+        icon_region = 'other2'
+    return icon_region
 
 '''
  设置cookie

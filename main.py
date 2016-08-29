@@ -3,7 +3,6 @@
 # 一个多态ZPN 的助手管理型Alfred Workflow, 可通过本Workflow 直接查看账户信息,切换线路,开关某些模式
 #
 # @name: AlfredWorkflow-DuoTai-Helper
-# @version: 1.2.0
 # @author: JeffMa
 # @website: http://devework.com/
 # @url: https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper
@@ -18,6 +17,7 @@ dt set: 设置多态账号信息
 dt switch: 展示当前所有可切换的线路
 dt switch [line-name]: 切换具体线路
 dt toggle [line-mode]: 开关/关闭相关模式
+dt invite: 展示邀请码情况
 '''
 
 import sys
@@ -57,7 +57,8 @@ def get_main_info(cookies):
 
     # 当前连接的线路
     current_line_mode = text_json['settings']['line_mode']
-    current_line_mode_name = common.line_to_name(current_line_mode)
+    current_line_modes = text_json['settings']['lines']
+    current_line_mode_name = common.line_to_name(current_line_mode, current_line_modes)
     # print current_line_mode_name
 
     # 是否开启了全球加速
@@ -99,7 +100,7 @@ def get_main_info(cookies):
 
     # 组合展示信息 part1
     item_title = u'当前线路: ' + current_line_mode_name
-    item_icon = 'icons/icon-' + current_line_mode[0:2] + '.png'
+    item_icon = 'regions/icon-' + common.region_name(current_line_mode[0:2]) + '.png'
     wf.add_item(item_title,  #title
                 u'↵ 进行线路切换', #sub title
                 arg=u'set',
@@ -211,10 +212,12 @@ def show_line_info():
         else:
             item_title = json_item['name']
 
+        region_single = json_item['line'][0:2]
+
         wf.add_item(item_title,
                     '',
                     valid=True,
-                    icon='icons/icon-' + json_item['line'][0:2] + '.png',
+                    icon='regions/icon-' + common.region_name(region_single) + '.png',
                     arg="switch " + json_item['line'])
         i = i + 1
     wf.send_feedback()
@@ -228,9 +231,9 @@ def switch_line(line_mode):
     dt_cookies = common.load_cookies(common.dt_file_name)
     r4 = requests.put('https://duotai.org/api/user/settings', headers=common.dt_headers, cookies=dt_cookies,
                       json=request_payload)
-    # print r4.status_code
+
     if r4.status_code == 200:
-        print '成功切换到:' + common.line_to_name(line_mode)
+        print u"成功切换到目标线路[%s]!" % line_mode
 
 
 '''
@@ -307,6 +310,7 @@ def create_invite_code():
     dt_cookies = common.load_cookies(common.dt_file_name)
     r6 = requests.post('https://duotai.org/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
     text_json = json.loads(r6.text)
+    # print text_json
     # 判断是否正常生成
     if len(text_json) > 10:
         new_code = text_json['code']

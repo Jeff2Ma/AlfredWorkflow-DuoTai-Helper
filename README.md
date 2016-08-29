@@ -1,6 +1,6 @@
 #AlfredWorkflow-DuoTai-Helper
 
-> 专为科学上网服务[多态](https://duotai.org/) (duotai.org) 开发的一个助手管理型 [Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
+> 专为科学上网服务[多态](https://duotai.org/) (duotai.org) 开发的一个助手管理型 [Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式，管理邀请码等。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
 
 ## 功能与特色
 
@@ -96,7 +96,7 @@
 
 - 使用本Workflow 前请确保你的Alfred APP 的Powerpack 功能已经解锁。
 
-- 须为多态付费用户，Basic 套餐用户使用最佳（因为我没有PRO 套餐所以不知道其 API是否有区别）。
+- 须为多态付费用户，支持Basic 或Pro 套餐。
 
 - 确保已经安装 [requests](http://docs.python-requests.org/zh_CN/latest/index.html) 库:
 
@@ -120,19 +120,25 @@
 
 - 一个[Apple Account Switcher](http://www.packal.org/workflow/apple-account-switcher) Workflow 带来的灵感
 
+- 这个设计师设计的[国旗图标](https://www.iconfinder.com/iconsets/world-cup-2014-cogged-wheel-style)
+
 ## 意见反馈
 
 如果有意见反馈或者功能建议，欢迎创建 Issue 或发送 Pull Request，感谢你的支持和贡献。
 
 ## 附：更新历史
 
-### V1.2.0 - 2016.08.28
+### v1.2.1 - 2016.08.29
+
+- 优化：兼容Pro 套餐用户的信息展示
+
+### v1.2.0 - 2016.08.28
 
 - 增加：管理邀请码功能
 
 - 开源代码，公开发布
 
-### V1.1.0 - 2016.08.28
+### v1.1.0 - 2016.08.28
 
 - 增加：一键复制PAC 文件功能
 
@@ -140,6 +146,6 @@
 
 - 增加：一键将PAC 文件路径保存在系统的自动代理配置功能
 
-### V1.0.0 - 2016.08.27
+### v1.0.0 - 2016.08.27
 
 - 功能成型
