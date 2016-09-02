@@ -32,7 +32,14 @@ from workflow import Workflow, PasswordNotFound
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-wf = Workflow()
+wf = Workflow(
+    update_settings={
+        # Your username and the workflow's repo's name
+        'github_slug': 'Jeff2Ma/AlfredWorkflow-DuoTai-Helper',
+        # Optional number of days between checks for updates
+        'frequency': 7
+    }
+)
 
 '''
 对输入的参数进行加工
@@ -110,8 +117,7 @@ def get_main_info(cookies):
                 arg=u'set',
                 autocomplete=u'switch',
                 valid=False,
-                icon=item_icon,
-                copytext=u'Text when copying')
+                icon=item_icon)
 
     # 组合展示信息 part5
     item_title_5 = u'边缘模式: ' + is_edge_mode_name
@@ -337,9 +343,20 @@ def create_invite_code():
 
 
 '''
+更新提醒
+'''
+def update_notic():
+    if not wf.update_available:
+        wf.add_item(u'提醒: DuoTai-Helper 有更新!',
+                    u'检测到本workflow 有更新版本, 请 ↵ 前往下载',
+                    arg=u'update',
+                    icon=u'icons/icon-update.png')
+
+'''
 主函数
 '''
 def main():
+    update_notic()
     if arg(1) == "switch":
         if arg(2) == "":
             show_line_info()
@@ -358,6 +375,7 @@ def main():
             set_pac_url(arg(2))
         elif arg(1) == "create_invite_code":
             create_invite_code()
+
 
 if __name__ == '__main__':
     main()
