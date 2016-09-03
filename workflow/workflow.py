@@ -2431,6 +2431,8 @@ class Workflow(object):
             # version = self._update_settings['version']
             version = str(self.version)
 
+            # self.logger.debug('DuoTaiHelperDEBUG:'+github_slug+version)
+
             from background import run_in_background
 
             # update.py is adjacent to this file

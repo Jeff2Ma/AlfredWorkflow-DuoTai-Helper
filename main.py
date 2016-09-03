@@ -25,6 +25,7 @@ import requests
 import json
 import datetime
 import subprocess
+import webbrowser
 
 import common  # 公共模块
 from workflow import Workflow, PasswordNotFound
@@ -346,11 +347,21 @@ def create_invite_code():
 更新提醒
 '''
 def update_notic():
-    if not wf.update_available:
+    wf.check_update()
+    # wf.cached_data('__workflow_update_status', max_age=0)
+    if wf.update_available:
         wf.add_item(u'提醒: DuoTai-Helper 有更新!',
                     u'检测到本workflow 有更新版本, 请 ↵ 前往下载',
                     arg=u'update',
+                    valid=True,
                     icon=u'icons/icon-update.png')
+
+
+'''
+引导到下载页
+'''
+def update_action():
+    webbrowser.open_new('https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper')
 
 '''
 主函数
@@ -375,6 +386,8 @@ def main():
             set_pac_url(arg(2))
         elif arg(1) == "create_invite_code":
             create_invite_code()
+        elif arg(1) == "update":
+            update_action()
 
 
 if __name__ == '__main__':
