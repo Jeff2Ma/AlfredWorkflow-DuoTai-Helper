@@ -121,6 +121,7 @@ def get_main_info(cookies):
                 icon=item_icon)
 
     # 组合展示信息 part5
+    '''
     item_title_5 = u'边缘模式: ' + is_edge_mode_name
     item_sub_title_5 = u'↵ ' + (u'关闭' if is_edge_mode else u'开启')
     item_arg_5 = ('toggle edge_mode_close' if is_edge_mode else 'toggle edge_mode_open')
@@ -130,6 +131,8 @@ def get_main_info(cookies):
                 arg=item_arg_5,
                 valid=True,
                 icon=item_icon_5)
+    '''
+
 
     # 组合展示信息 part4
     item_title_4 = u'全网加速: ' + is_global_mode_name
