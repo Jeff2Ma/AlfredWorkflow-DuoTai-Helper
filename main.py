@@ -364,7 +364,7 @@ def update_notic():
 引导到下载页
 '''
 def update_action():
-    webbrowser.open_new('https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper')
+    webbrowser.open_new('https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper/releases')
 
 '''
 主函数
