@@ -367,6 +367,25 @@ def update_action():
     webbrowser.open_new('https://github.com/Jeff2Ma/AlfredWorkflow-DuoTai-Helper/releases')
 
 '''
+删除多态账号
+'''
+def remove_account():
+    wf.clear_data()
+    print u"删除成功!"
+
+'''
+删除账号的item
+'''
+def rm_item():
+    wf.add_item(u"删除保存的多态账号",
+                u" ↵ 将删除账号",
+                arg=u'remove_account',
+                valid=True,
+                icon=u'icons/icon-rm.png')
+
+    wf.send_feedback()
+
+'''
 主函数
 '''
 def main():
@@ -378,6 +397,8 @@ def main():
             switch_line(arg(2))
     elif arg(1) == "invite":
             invite_info()
+    elif arg(1) == "rm":
+        rm_item()
     elif arg(0) == "default_item":
         default_item(arg(1))
     elif arg(0) == "second_task":
@@ -389,6 +410,8 @@ def main():
             set_pac_url(arg(2))
         elif arg(1) == "create_invite_code":
             create_invite_code()
+        elif arg(1) == "remove_account":
+            remove_account()
         elif arg(1) == "update":
             update_action()
 
