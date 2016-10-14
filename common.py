@@ -39,12 +39,21 @@ dt_file_name = wf.datafile('cookie.txt')
 转换容量单位,size 为B 基本单位
 '''
 def convert_size(size):
+    flag = False
     if (size == 0):
         return '0B'
+    # 处理负数的情况
+    if (size < 0):
+        size = size * -1
+        flag = True
+
     size_name = ("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB")
     i = int(math.floor(math.log(size, 1024)))
     p = math.pow(1024, i)
     s = round(size / p, 2)
+
+    if (flag):
+        s = s * -1
     return '%s %s' % (s, size_name[i])
 
 '''
