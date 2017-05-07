@@ -1,4 +1,4 @@
-#AlfredWorkflow-DuoTai-Helper
+# AlfredWorkflow-DuoTai-Helper
 
 > 专为科学上网服务[多态](https://duotai.love/) (duotai.org) 开发的一个助手管理型 [Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式，管理邀请码等。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
 
@@ -141,6 +141,10 @@
 如果有意见反馈或者功能建议，欢迎创建 Issue 或发送 Pull Request，感谢你的支持和贡献。
 
 ## 附：更新历史
+
+### v1.4.0 - 2017.05.07
+
+- 修改：修改主域名为duotai.love.
 
 ### v1.3.3 - 2016.10.15
 
