@@ -60,7 +60,7 @@ def arg(pos):
 '''
 def get_main_info(cookies):
 
-    r2 = requests.get('https://duotai.org/api/user/', headers=common.dt_headers, cookies=cookies)
+    r2 = requests.get('https://duotai.love/api/user/', headers=common.dt_headers, cookies=cookies)
     text_json = json.loads(r2.text)
 
     # 当前连接的线路
@@ -226,7 +226,7 @@ def show_line_info():
         arg=u'set_account')
 
     dt_cookies = common.load_cookies(common.dt_file_name)
-    r3 = requests.get('https://duotai.org/api/user/', headers=common.dt_headers, cookies=dt_cookies)
+    r3 = requests.get('https://duotai.love/api/user/', headers=common.dt_headers, cookies=dt_cookies)
     text_json = json.loads(r3.text)
     i = 0
     for json_item in text_json['settings']['lines']:
@@ -256,7 +256,7 @@ def switch_line(line_mode):
     line_mode = line_mode.lower()
     request_payload = {"line_mode": line_mode}
     dt_cookies = common.load_cookies(common.dt_file_name)
-    r4 = requests.put('https://duotai.org/api/user/settings', headers=common.dt_headers, cookies=dt_cookies,
+    r4 = requests.put('https://duotai.love/api/user/settings', headers=common.dt_headers, cookies=dt_cookies,
                       json=request_payload)
 
     if r4.status_code == 200:
@@ -297,7 +297,7 @@ def toggle_mode(mode_command):
 
     dt_cookies = common.load_cookies(common.dt_file_name)
     if request_payload:
-        r4 = requests.put('https://duotai.org/api/user/settings', headers=common.dt_headers, cookies=dt_cookies,json=request_payload)
+        r4 = requests.put('https://duotai.love/api/user/settings', headers=common.dt_headers, cookies=dt_cookies,json=request_payload)
         # print r4.status_code
         if r4.status_code == 200:
             print '成功执行任务[' + mode_command + ']!'
@@ -308,7 +308,7 @@ def toggle_mode(mode_command):
 '''
 def invite_info():
     dt_cookies = common.load_cookies(common.dt_file_name)
-    r5 = requests.get('https://duotai.org/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
+    r5 = requests.get('https://duotai.love/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
     text_json = json.loads(r5.text)
 
     # print text_json['invite_codes']
@@ -335,7 +335,7 @@ def invite_info():
 '''
 def create_invite_code():
     dt_cookies = common.load_cookies(common.dt_file_name)
-    r6 = requests.post('https://duotai.org/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
+    r6 = requests.post('https://duotai.love/api/user/invite-codes', headers=common.dt_headers, cookies=dt_cookies)
     text_json = json.loads(r6.text)
     # print text_json
     # 判断是否正常生成

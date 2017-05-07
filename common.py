@@ -30,7 +30,7 @@ wf = Workflow()
 dt_headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
     'Accept-Encoding': 'gzip, deflate, br',
-    'Referer': 'https://duotai.org/login'
+    'Referer': 'https://duotai.love/login'
     }
 
 dt_file_name = wf.datafile('cookie.txt')
@@ -111,7 +111,7 @@ def get_cookie():
     file = open(dt_file_name, "w")
     file.close()
 
-    dt_login_url = 'https://duotai.org/api/signin'
+    dt_login_url = 'https://duotai.love/api/signin'
     dt_email = get_data_email()
     dt_password = get_password()
     dt_login_payload = {"email": dt_email, "password": dt_password}
@@ -144,7 +144,7 @@ def check_cookie_ok():
         get_cookie()
 
     # print dt_cookies
-    r2 = requests.get('https://duotai.org/api/user/', headers=dt_headers, cookies=dt_cookies)
+    r2 = requests.get('https://duotai.love/api/user/', headers=dt_headers, cookies=dt_cookies)
     # print len(r2.text)
     # 判断条件: 如果因为过期等原因登录错误则返回信息len 较少
     if len(r2.text) < 100:

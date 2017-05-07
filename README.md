@@ -1,6 +1,6 @@
 #AlfredWorkflow-DuoTai-Helper
 
-> 专为科学上网服务[多态](https://duotai.org/) (duotai.org) 开发的一个助手管理型 [Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式，管理邀请码等。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
+> 专为科学上网服务[多态](https://duotai.love/) (duotai.org) 开发的一个助手管理型 [Alfred](https://www.alfredapp.com/) Workflow。可通过本 Workflow 可以直接查看账户信息，切换线路，开关某些模式，管理邀请码等。使用 Python 语言编写( python2 )，支持最新的 Alfred 3。
 
 ## 功能与特色
 
